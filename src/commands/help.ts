@@ -20,6 +20,6 @@ export function printHelpOverview(): void {
   console.log(chalk.green("  aibootstrap guide"));
   console.log("    Explain the structure of the 'agent' folder and how to use it in a new project.");
 
-  console.log("\nTip:"));
+  console.log("\nTip:");
   console.log("  Use 'aibootstrap --help' or 'aibootstrap help' to see this overview.");
 }

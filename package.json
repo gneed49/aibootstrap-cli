@@ -11,6 +11,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/cli.ts",
+    "test:cli": "node scripts/smoke-test-cli.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
