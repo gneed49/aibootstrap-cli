@@ -15,7 +15,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - Example: `npm run dev -- help` or `npm run dev -- init ./my-project`
 - Run the built CLI directly: `node dist/cli.js <command> [options]`
   - Example: `node dist/cli.js help`
-- The published npm binary name is `aibootstrap` (configured in `package.json`), which maps to `dist/cli.js` when installed globally.
+- The published npm binary name is `aib` (configured in `package.json`), which maps to `dist/cli.js` when installed globally.
 
 ### Linting & tests
 
@@ -35,17 +35,18 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 - Node.js CLI written in TypeScript targeting CommonJS (`tsconfig.json`).
 - Uses `commander` for argument parsing, `chalk` for colored output, and `fs-extra` for filesystem utilities.
-- The published npm binary `aibootstrap` maps to `dist/cli.js` and ships with the `agent/` folder as an embedded template (see `files` in `package.json`).
+- The published npm binary `aib` maps to `dist/cli.js` and ships with the `agent/` folder as an embedded template (see `files` in `package.json`).
 
 ### CLI entrypoint (`src/cli.ts`)
 
-- Configures the `aibootstrap` command, loads the version from `package.json`, and wires subcommands:
+- Configures the `aib` command, loads the version from `package.json`, and wires subcommands:
   - `init [directory]` → `runInit` in `src/commands/init.ts`.
   - `help` → `printHelpOverview` in `src/commands/help.ts`.
   - `config:agent` → `runConfigAgent` in `src/commands/configAgent.ts`.
   - `config:workflow` → `runConfigWorkflow` in `src/commands/configWorkflow.ts`.
   - `guide` → `printBootstrapGuide` in `src/commands/guide.ts`.
-- If invoked with no arguments, prints a short banner and a hint to run `--help` or `aibootstrap help`.
+  - Additional flows: `session:init` (alias `start`), `generate`, `bootstrap:mvp`, `claude`, `task:run`, `sprint:run`, `memory:log`, change helpers, tracks, agents list.
+- If invoked with no arguments, prints a short banner and a hint to run `--help` or `aib help`.
 
 ### Command modules (`src/commands`)
 
@@ -55,7 +56,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - Fails fast with human-readable errors if the template is missing or an `agent` folder already exists without `--force`.
 
 - `configAgent.ts`:
-  - Requires an `agent/` folder in the current project (assumes `aibootstrap init` has been run).
+  - Requires an `agent/` folder in the current project (assumes `aib init` has been run).
   - Writes `agent/config/agent.config.json` with `mode` (`chat` | `tool-calling` | `workflow`) and optional `type` (e.g. `coder`, `researcher`).
 
 - `configWorkflow.ts`:
@@ -70,7 +71,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ### Embedded agent starter kit (`agent/`)
 
-This repository ships an opinionated, tool-agnostic agent workflow kit as a template; `aibootstrap init` copies this entire folder into a target project. Changes under `agent/` affect what downstream consumers receive.
+This repository ships an opinionated, tool-agnostic agent workflow kit as a template; `aib init` copies this entire folder into a target project. Changes under `agent/` affect what downstream consumers receive.
 
 Key high-level pieces:
 
