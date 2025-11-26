@@ -1,11 +1,11 @@
 {
   "name": "aibootstrap-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI to bootstrap AI agent projects (init copies the embedded agent template)",
   "author": "",
   "license": "MIT",
   "bin": {
-    "aibootstrap": "./dist/cli.js"
+    "aibootstrap": "dist/cli.js"
   },
   "main": "dist/cli.js",
   "scripts": {
