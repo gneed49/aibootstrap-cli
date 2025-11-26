@@ -172,7 +172,7 @@ export async function runTaskExecution(
   if (!(await fs.pathExists(taskPath))) {
     console.error(
       chalk.red(
-        `❌ Task introuvable: ${taskPath}. Crée-la d'abord (aibootstrap generate:task --id ${taskId}).`,
+        `❌ Task introuvable: ${taskPath}. Crée-la d'abord (aib generate:task --id ${taskId}).`,
       ),
     );
     process.exit(1);
@@ -225,7 +225,7 @@ export async function runSprintExecution(
   if (!(await fs.pathExists(sprintPath))) {
     console.error(
       chalk.red(
-        `❌ Sprint introuvable: ${sprintPath}. Crée-le d'abord (aibootstrap generate:sprint --id ${sprintId}).`,
+        `❌ Sprint introuvable: ${sprintPath}. Crée-le d'abord (aib generate:sprint --id ${sprintId}).`,
       ),
     );
     process.exit(1);

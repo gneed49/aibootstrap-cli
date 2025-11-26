@@ -9,14 +9,19 @@ interface WorkflowConfig {
   entryFile?: string; // ex: src/agent/workflows/main.ts
 }
 
-export async function runConfigWorkflow(options: { kind?: string; entryFile?: string }) {
+export async function runConfigWorkflow(options: {
+  kind?: string;
+  entryFile?: string;
+}) {
   const projectRoot = process.cwd();
   const configDir = path.join(projectRoot, "agent", "config");
   const configPath = path.join(configDir, "workflow.config.json");
 
   if (!(await fs.pathExists(path.join(projectRoot, "agent")))) {
     console.error(
-      chalk.red("No 'agent' folder detected in this project. Run 'aibootstrap init' first."),
+      chalk.red(
+        "No 'agent' folder detected in this project. Run 'aib init' first.",
+      ),
     );
     process.exit(1);
   }

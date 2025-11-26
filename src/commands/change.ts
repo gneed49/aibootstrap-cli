@@ -37,17 +37,25 @@ export async function runChangeInit(
   const capability = options.capability ?? "capability-name";
 
   if (!changeId) {
-    console.error(chalk.red("❌ Please provide a change id (kebab-case, verb-led)."));
+    console.error(
+      chalk.red("❌ Please provide a change id (kebab-case, verb-led)."),
+    );
     process.exit(1);
   }
 
   if (!(await fs.pathExists(agentDir))) {
-    console.error(chalk.red(`❌ 'agent' folder not found at ${agentDir}. Run 'aibootstrap init' first.`));
+    console.error(
+      chalk.red(
+        `❌ 'agent' folder not found at ${agentDir}. Run 'aib init' first.`,
+      ),
+    );
     process.exit(1);
   }
 
   if (!(await fs.pathExists(templateDir))) {
-    console.error(chalk.red(`❌ Template directory not found at ${templateDir}.`));
+    console.error(
+      chalk.red(`❌ Template directory not found at ${templateDir}.`),
+    );
     process.exit(1);
   }
 
@@ -66,9 +74,21 @@ export async function runChangeInit(
   await fs.ensureDir(targetDir);
 
   try {
-    await copyTemplate(templateDir, "proposal.template.md", path.join(targetDir, "proposal.md"));
-    await copyTemplate(templateDir, "tasks.template.md", path.join(targetDir, "tasks.md"));
-    await copyTemplate(templateDir, "design.template.md", path.join(targetDir, "design.md"));
+    await copyTemplate(
+      templateDir,
+      "proposal.template.md",
+      path.join(targetDir, "proposal.md"),
+    );
+    await copyTemplate(
+      templateDir,
+      "tasks.template.md",
+      path.join(targetDir, "tasks.md"),
+    );
+    await copyTemplate(
+      templateDir,
+      "design.template.md",
+      path.join(targetDir, "design.md"),
+    );
 
     const specTarget = path.join(targetDir, "specs", capability, "spec.md");
     await copyTemplate(templateDir, "spec_delta.template.md", specTarget);
@@ -130,7 +150,9 @@ export async function runChangeArchive(
 
   try {
     await fs.move(changeDir, targetDir);
-    console.log(chalk.green(`✅ Change '${changeId}' archived to ${targetDir}`));
+    console.log(
+      chalk.green(`✅ Change '${changeId}' archived to ${targetDir}`),
+    );
     console.log(
       chalk.gray(
         "Remember to merge approved deltas into specs/ and log decisions in context/decisions.md.",

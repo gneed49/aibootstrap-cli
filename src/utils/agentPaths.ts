@@ -11,7 +11,7 @@ export async function requireAgentRoot(workingDir?: string): Promise<string> {
   if (!(await fs.pathExists(agentRoot))) {
     console.error(
       chalk.red(
-        `❌ 'agent' folder not found at ${agentRoot}. Run 'aibootstrap init' in your project first.`,
+        `❌ 'agent' folder not found at ${agentRoot}. Run 'aib init' in your project first.`,
       ),
     );
     process.exit(1);

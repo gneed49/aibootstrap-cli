@@ -31,6 +31,6 @@ This framework supports a "Swarm" mode where an **Orchestrator Agent** (`agents/
 2. **Delegation**: Assigns tasks to Architect, Code, or Testing agents.
 3. **Synthesis**: Combines results and updates `context/memory.md`.
 
-Use `aibootstrap start` to trigger this flow easily.
+Use `aib start` to trigger this flow easily.
 
 Tip: don’t delete templates—clone them for each new spec or sprint. Always have the agent read the relevant files before generating code.

@@ -9,14 +9,19 @@ interface AgentConfig {
   type?: string; // ex: "researcher", "coder", etc.
 }
 
-export async function runConfigAgent(options: { mode?: string; type?: string }) {
+export async function runConfigAgent(options: {
+  mode?: string;
+  type?: string;
+}) {
   const projectRoot = process.cwd();
   const configDir = path.join(projectRoot, "agent", "config");
   const configPath = path.join(configDir, "agent.config.json");
 
   if (!(await fs.pathExists(path.join(projectRoot, "agent")))) {
     console.error(
-      chalk.red("No 'agent' folder detected in this project. Run 'aibootstrap init' first."),
+      chalk.red(
+        "No 'agent' folder detected in this project. Run 'aib init' first.",
+      ),
     );
     process.exit(1);
   }

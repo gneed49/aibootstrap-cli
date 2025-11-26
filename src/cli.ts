@@ -31,7 +31,7 @@ import { runBootstrapMvp } from "./commands/bootstrapMvp";
 const program = new Command();
 
 program
-  .name("aibootstrap")
+  .name("aib")
   .description("CLI to bootstrap AI agent projects")
   .version(pkg.version);
 
@@ -315,7 +315,5 @@ program.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
   console.log(chalk.blue("🚀 AiBootstrap CLI"));
-  console.log(
-    chalk.gray("Use --help or 'aibootstrap help' to see available commands"),
-  );
+  console.log(chalk.gray("Use --help or 'aib help' to see available commands"));
 }
