@@ -13,14 +13,24 @@ A lean kit for working with an AI agent on any project.
 
 ## Useful structure
 - `context/`: pitch, constraints, glossary, roadmap, decisions, agent tools.
+- `context/memory.md`: **(New)** Long-term memory where the agent records lessons learned and preferred patterns.
 - `rules/`: coding, git, testing, review, stack rules.
 - `specs/`: single spec template to copy per initiative.
 - `tasks/`: backlog, tasks, and bugs.
+- `changes/`: proposals/tasks/deltas for non-trivial changes before coding.
 - `sprints/`: sprint tracking from the template.
 - `prompts/`: ready-to-use prompts to guide the agent.
-- `agents/`: role definitions (product, code, testing).
+- `agents/`: role definitions (product, code, testing, architect, ux, review) AND **Orchestrator** (Swarm Leader).
 - `commands/`: CLI-friendly commands to set agent/workflow/mode and run prompts.
 - `metadata/agent_context_map.md`: reading plan for the agent.
 - `agent_flow/`: entry workflows and operating guide for the agent.
+
+## Swarm & Orchestration
+This framework supports a "Swarm" mode where an **Orchestrator Agent** (`agents/orchestrator_agent.md`) coordinates specialized agents:
+1. **Analysis**: Orchestrator breaks down the user request.
+2. **Delegation**: Assigns tasks to Architect, Code, or Testing agents.
+3. **Synthesis**: Combines results and updates `context/memory.md`.
+
+Use `aibootstrap start` to trigger this flow easily.
 
 Tip: don’t delete templates—clone them for each new spec or sprint. Always have the agent read the relevant files before generating code.

@@ -7,6 +7,7 @@ How to collaborate efficiently with the agent.
 - Always provide context and rules before asking for code.
 - Small, well-scoped tasks yield better results.
 - Specs before code; decisions logged; tests by default.
+- Any non-trivial change goes through a change (proposal + tasks + deltas) before implementation.
 - The agent should not guess: it follows the versioned artifacts.
 
 ---
@@ -23,8 +24,9 @@ How to collaborate efficiently with the agent.
 
 ---
 
-## 3. Before coding: write the spec
+## 3. Before coding: write the spec (and the change if needed)
 - Use the single template `specs/spec.template.md` and copy it per feature/initiative.
+- For non-trivial changes, create a change folder from `changes/*.template.md` (proposal, tasks, deltas) before coding.
 - Pull facts from the sources listed in `context/agent_tools.template.md` (MCP, APIs, docs) before filling gaps.
 - Reference the spec from tasks so the agent can read it.
 

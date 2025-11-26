@@ -37,3 +37,15 @@ refactor_module target=<module path> specs=<spec list?>
 document_module target=<module path> specs=<spec list?>
 ```
 - Uses `prompts/document_module_from_code.md`.
+
+## review_code
+```
+review_code diff=<path or snippet> specs=<specs and/or changes> track=<Quick|Standard|Enterprise>
+```
+- Uses `prompts/review_code.md`.
+
+## change_proposal
+```
+change_proposal id=<change-id> capability=<cap> scope=<short desc>
+```
+- Guides the agent through `agent_flow/workflow_change.md` using templates in `changes/`.
